@@ -1,0 +1,5 @@
+BSIM3V3.1 Parameter Check
+Model = scmosn
+W = 5e-06, L = 1e-06
+Warning: Pd = 0 is less than W.
+Warning: Ps = 0 is less than W.

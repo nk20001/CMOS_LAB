@@ -1,0 +1,41 @@
+proc SCHEMATIC_Invlab10 {} {
+make scmosp4 -name M0 -w 2.5u -origin {3520 560}
+make scmosn4 -name M1 -w 1u -origin {3520 800}
+make global -orient RXY -name dvdd -origin {3520 410}
+make global -name dgnd -origin {3520 950}
+make input -name input -origin {3200 670}
+make output -name output -origin {3700 670}
+  make_wire 3460 560 3390 560
+  make_wire 3390 800 3460 800
+  make_wire 3520 410 3520 520
+  make_wire 3520 560 3580 560
+  make_wire 3580 560 3580 520
+  make_wire 3580 520 3520 520
+  make_wire 3520 800 3580 800
+  make_wire 3580 760 3520 760
+  make_wire 3700 670 3520 670
+  make_wire 3200 670 3390 670
+  make_wire 3580 760 3580 800
+  make_wire 3520 840 3520 950
+  make_wire 3390 560 3390 670
+  make_wire 3390 670 3390 800
+  make_wire 3520 600 3520 670
+  make_wire 3520 670 3520 760
+}
+
+proc ICON_Invlab10 args {
+
+  icon_setup $args {{origin {0 0}} {orient R0} {name x} {example_param 1.0}}
+icon_term -type input -origin {-100 0} -name input
+icon_term -type output -origin {100 0} -name output
+icon_property -origin {-90 10} -label input
+icon_property -origin {90 10} -anchor e -label output
+icon_property -origin {-90 -40} -label {$name}
+icon_property -origin {-90 -20} -label Lab10_inv
+  icon_line -100 -30 100 -30 100 30 -100 30 -100 -30
+icon_property -origin {-90 40} -label {example_param=$example_param}
+  icon_property -origin {-90 100} -type user -name name -default x
+  icon_property -origin {-90 120} -type user -name example_param -default 1.0
+
+}
+
