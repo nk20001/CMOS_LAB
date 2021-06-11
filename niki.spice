@@ -1,0 +1,26 @@
+* SPICE3 file created from niki.ext - technology: scmos
+.lib /project2020/eda/ngspice-32/models/scn4m_subm/scmos_bsim4.lib nom
+M1000 out in vdd vdd scmosp w=1.4u l=0.4u
++  ad=2.24p pd=6u as=2.24p ps=12u
+M1001 out in gnd gnd scmosn w=1.4u l=0.4u
++  ad=2.24p pd=6u as=2.24p ps=12.4u
+C0 out in 0.04fF
+C1 vdd in 0.22fF
+C2 vdd out 0.14fF
+C3 out gnd 0.11fF
+C4 vdd gnd 2.33fF
+C5 vdd gnd 2.33fF
+.temp 27
+.param vsupply=2.5
+.global vdd gnd
+Vsup vdd 0 2.5
+vin in gnd pulse 0 2.5 10n 10p 5n 10n
+.options post=1 delmax=5p relv=1e-6 reli=1e-6 relmos=1e-6 method=gear
+.tran 5p 50n
+.control
+run 
+plot v(in)+3 v(out)
+.endc
+.op
+.measure tran tdiff trig v(in) val=1.25 fall=1 targ v(out) val=1.25 rise=1
+.end
